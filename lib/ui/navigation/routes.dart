@@ -12,7 +12,9 @@ class RoutePaths {
 final rootNavigatorKey = GlobalKey<NavigatorState>();
 
 @TypedGoRoute<ExampleRoute>(path: RoutePaths.example)
-class ExampleRoute extends GoRouteData with _$ExampleRoute {
+class ExampleRoute extends GoRouteData {
+  const ExampleRoute();
+
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const ExampleScreen();
