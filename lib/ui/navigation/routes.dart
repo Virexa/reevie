@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart'
     show BuildContext, Widget, NavigatorState, GlobalKey;
 import 'package:go_router/go_router.dart';
-import 'package:movirex/ui/example/example_screen.dart';
+import '../example/example_screen.dart';
 
 part 'routes.g.dart';
 

@@ -1,4 +1,4 @@
-package com.virexa.movirex.movirex
+package com.virexa.reevie
 
 import io.flutter.embedding.android.FlutterActivity
 

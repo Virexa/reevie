@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movirex/style/theme/typography/typography.dart';
-import 'package:movirex/ui/example/example_state_notifier.dart';
-import 'package:movirex/ui/extensions/context_extension.dart';
+import 'package:reevie/ui/extensions/context_extension.dart';
+import '../../style/theme/typography/typography.dart';
+import 'example_state_notifier.dart';
 
 class ExampleScreen extends ConsumerStatefulWidget {
   const ExampleScreen({super.key});

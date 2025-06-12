@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movirex/style/theme/color/colors.dart';
-import 'package:movirex/ui/extensions/context_extension.dart';
+import 'package:reevie/ui/extensions/context_extension.dart';
 import '../gen/l10n/app_localizations.dart';
 import '../style/theme/color/builder.dart';
+import '../style/theme/color/colors.dart';
 import 'navigation/routes.dart';
 
 class MyApp extends StatefulWidget {
