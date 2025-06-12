@@ -5,10 +5,7 @@ const _defaultSwitcherTimeMillis = Duration(milliseconds: 300);
 class FadeInSwitcher extends StatefulWidget {
   final Widget child;
 
-  const FadeInSwitcher({
-    super.key,
-    required this.child,
-  });
+  const FadeInSwitcher({super.key, required this.child});
 
   @override
   State<FadeInSwitcher> createState() => _FadeInSwitcherState();
