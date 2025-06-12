@@ -28,9 +28,9 @@ jobs:
 
         run: |
           echo $FIREBASE_OPTIONS_BASE64 | base64 -di > lib/firebase_options.dart
-          echo $GOOGLE_SERVICES_JSON_BASE64 | base64 -di > android/app/google-services.json
-          echo $GOOGLE_SERVICE_INFO_PLIST_BASE64 | base64 --decode > ios/Runner/GoogleService-Info.plist
-          echo $GOOGLE_SERVICE_INFO_PLIST_BASE64 | base64 --decode > macos/Runner/GoogleService-Info.plist
+          echo $GOOGLE_SERVICES_JSON_ANDROID_BASE64 | base64 -di > android/app/google-services.json
+          echo $GOOGLE_SERVICE_INFO_PLIST_IOS_BASE64 | base64 --decode > ios/Runner/GoogleService-Info.plist
+          echo $GOOGLE_SERVICE_INFO_PLIST_MACOS_BASE64 | base64 --decode > macos/Runner/GoogleService-Info.plist
           echo $FIREBASE_JSON_BASE64 | base64 --decode > firebase.json
           echo $KEY_PROPERTIES_BASE64 | base64 --decode > android/key.properties     
           echo $RELEASE_JKS_BASE64 | base64 --decode > android/app/release.jks     
