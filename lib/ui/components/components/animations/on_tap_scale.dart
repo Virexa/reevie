@@ -65,10 +65,7 @@ class _OnTapScaleState extends State<OnTapScale> with TickerProviderStateMixin {
       onTapCancel: () {
         onTapUp();
       },
-      child: Transform.scale(
-        scale: _squareScaleA,
-        child: widget.child,
-      ),
+      child: Transform.scale(scale: _squareScaleA, child: widget.child),
     );
   }
 

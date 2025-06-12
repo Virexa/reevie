@@ -5,7 +5,5 @@ final exampleServiceProvider = Provider<ExampleService>((ref) {
 });
 
 class ExampleService {
-
-
   int getValue() => 1;
 }
