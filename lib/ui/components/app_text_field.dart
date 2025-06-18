@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reevie/ui/extensions/context_extension.dart';
-import '../../../style/theme/typography/typography.dart';
+import '../../style/theme/typography/typography.dart';
 
 class AppTextField extends StatelessWidget {
   final String? label;
