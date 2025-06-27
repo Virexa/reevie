@@ -29,7 +29,7 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: BlurIconButton(
-                    onTap: (){
+                    onTap: () {
                       context.pop();
                     },
                     icon: Icon(
@@ -116,7 +116,10 @@ class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
                   Row(
                     spacing: 8,
                     children: [
-                      ...["Fantastic", "Action"].map((e) => ChipButton(text: e)),
+                      ...[
+                        "Fantastic",
+                        "Action",
+                      ].map((e) => ChipButton(text: e)),
                     ],
                   ),
                   const SizedBox(height: 24),

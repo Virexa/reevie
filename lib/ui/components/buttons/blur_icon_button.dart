@@ -20,7 +20,9 @@ class BlurIconButton extends StatelessWidget {
           child: Container(
             height: 50,
             width: 50,
-            decoration: BoxDecoration(color: context.colorScheme.containerMedium),
+            decoration: BoxDecoration(
+              color: context.colorScheme.containerMedium,
+            ),
             child: icon,
           ),
         ),
