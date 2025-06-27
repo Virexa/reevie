@@ -17,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   late GoRouter _router;
 
   String _configureInitialRoute() {
-    return RoutePaths.example;
+    return RoutePaths.home;
   }
 
   @override

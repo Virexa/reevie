@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:reevie/ui/extensions/context_extension.dart';
-import '../../style/theme/typography/typography.dart';
 import 'example_state_notifier.dart';
 
 class ExampleScreen extends ConsumerStatefulWidget {
@@ -24,33 +22,20 @@ class _HomeScreenState extends ConsumerState<ExampleScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(exampleStateNotifierProvider);
     return Scaffold(
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: _notifier.increment,
-            child: Text(
-              "Increment",
-              style: AppTextStyles.button.copyWith(
-                color: context.colorScheme.onPrimary,
-              ),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: _notifier.increment,
+              child: Text('Increment'),
             ),
-          ),
-          Text(
-            "Count: ${state.count}",
-            style: AppTextStyles.header1.copyWith(
-              color: context.colorScheme.textPrimary,
+            Text(state.count.toString()),
+            ElevatedButton(
+              onPressed: _notifier.decrement,
+              child: Text('Decrement'),
             ),
-          ),
-          ElevatedButton(
-            onPressed: _notifier.decrement,
-            child: Text(
-              "Decrement",
-              style: AppTextStyles.button.copyWith(
-                color: context.colorScheme.onPrimary,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
