@@ -99,7 +99,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withValues(alpha: 0.7),
+                    context.colorScheme.surface.withValues(alpha: 0.7),
                     Colors.transparent,
                   ],
                 ),
