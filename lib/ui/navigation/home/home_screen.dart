@@ -107,34 +107,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  true
-                      ? BlurIconButton(
-                          icon: Icon(
-                            Icons.person,
-                            color: context.colorScheme.textPrimary,
-                            size: 24,
-                          ),
-                        )
-                      : ClipRSuperellipse(
-                          borderRadius: BorderRadius.circular(20),
-                          child: OnTapScale(
-                            onTap: () {
-                              //Todo: navigate to profile
-                            },
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                color: context.colorScheme.containerMedium,
-                              ),
-                              child: Icon(
-                                Icons.person_outline_rounded,
-                                color: context.colorScheme.textPrimary,
-                                size: 24,
-                              ),
-                            ),
-                          ),
-                        ),
+                  BlurIconButton(
+                    icon: Icon(
+                      Icons.person,
+                      color: context.colorScheme.textPrimary,
+                      size: 24,
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: ClipRSuperellipse(
