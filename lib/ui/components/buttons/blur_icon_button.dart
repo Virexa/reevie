@@ -16,7 +16,7 @@ class BlurIconButton extends StatelessWidget {
       child: ClipRSuperellipse(
         borderRadius: BorderRadius.circular(20),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
           child: Container(
             height: 50,
             width: 50,

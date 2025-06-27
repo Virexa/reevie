@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reevie/ui/components/animations/on_tap_scale.dart';
@@ -22,48 +24,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Stack(
+          alignment: Alignment.topCenter,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ClipRSuperellipse(
-                    borderRadius: BorderRadius.circular(20),
-                    child: OnTapScale(
-                      onTap: () {
-                        //Todo: navigate to profile
-                      },
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: context.colorScheme.containerMedium,
-                        ),
-                        child: Icon(
-                          Icons.person_outline_rounded,
-                          color: context.colorScheme.textPrimary,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  BlurIconButton(
-                    icon: Icon(
-                      Icons.menu,
-                      color: context.colorScheme.textPrimary,
-                      size: 24,
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 children: [
+                  const SizedBox(height: 66),
                   GetPremiumCard(),
                   const SizedBox(height: 24),
                   Row(
@@ -120,6 +88,93 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     onMovieTap: () {
                       MovieDetailRoute(id: "movie").push(context);
                     },
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black.withValues(alpha: 0.7),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  true
+                      ? BlurIconButton(
+                          icon: Icon(
+                            Icons.person,
+                            color: context.colorScheme.textPrimary,
+                            size: 24,
+                          ),
+                        )
+                      : ClipRSuperellipse(
+                          borderRadius: BorderRadius.circular(20),
+                          child: OnTapScale(
+                            onTap: () {
+                              //Todo: navigate to profile
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                color: context.colorScheme.containerMedium,
+                              ),
+                              child: Icon(
+                                Icons.person_outline_rounded,
+                                color: context.colorScheme.textPrimary,
+                                size: 24,
+                              ),
+                            ),
+                          ),
+                        ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: ClipRSuperellipse(
+                      borderRadius: BorderRadius.circular(20),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          height: 50,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: context.colorScheme.containerMedium,
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.search,
+                                color: context.colorScheme.textPrimary,
+                                size: 24,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                "Search",
+                                style: AppTextStyles.body.copyWith(
+                                  color: context.colorScheme.textSecondary,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  BlurIconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: context.colorScheme.textPrimary,
+                      size: 24,
+                    ),
                   ),
                 ],
               ),
