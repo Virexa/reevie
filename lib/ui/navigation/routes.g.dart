@@ -6,7 +6,28 @@ part of 'routes.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$homeRoute];
+List<RouteBase> get $appRoutes => [$onBoardRoute, $homeRoute];
+
+RouteBase get $onBoardRoute => GoRouteData.$route(
+  path: '/onboard',
+
+  factory: $OnBoardRouteExtension._fromState,
+);
+
+extension $OnBoardRouteExtension on OnBoardRoute {
+  static OnBoardRoute _fromState(GoRouterState state) => const OnBoardRoute();
+
+  String get location => GoRouteData.$location('/onboard');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $homeRoute => GoRouteData.$route(
   path: '/',

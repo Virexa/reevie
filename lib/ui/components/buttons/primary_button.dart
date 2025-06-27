@@ -25,6 +25,7 @@ class PrimaryButton extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   ?icon,
                   if (icon != null) const SizedBox(width: 8),
