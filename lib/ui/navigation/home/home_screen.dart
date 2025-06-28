@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reevie/ui/components/animations/on_tap_scale.dart';
@@ -23,87 +22,100 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          ListView(
+            children: [
+              const SizedBox(height: 82),
+              GetPremiumCard(),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const SizedBox(height: 66),
-                  GetPremiumCard(),
-                  const SizedBox(height: 24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Text(
-                          "Popular",
-                          style: AppTextStyles.header3.copyWith(
-                            color: context.colorScheme.textPrimary,
-                          ),
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      "Popular",
+                      style: AppTextStyles.header3.copyWith(
+                        color: context.colorScheme.textPrimary,
+                      ),
+                    ),
+                  ),
+                  OnTapScale(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        "View All",
+                        style: AppTextStyles.button.copyWith(
+                          color: context.colorScheme.textSecondary,
                         ),
                       ),
-                      OnTapScale(
-                        onTap: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(
-                            "View All",
-                            style: AppTextStyles.button.copyWith(
-                              color: context.colorScheme.textSecondary,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  MovieCarousel(
-                    itemCount: 10,
-                    builder: (index, isOnCenter) =>
-                        MovieComponent(height: 400, onTap: () {}),
-                  ),
-                  const SizedBox(height: 24),
-                  MovieCategoryComponent(
-                    title: "New Release",
-                    onViewAllTap: () {},
-                    onMovieTap: () {
-                      MovieDetailRoute(id: "movie").push(context);
-                    },
-                  ),
-                  const SizedBox(height: 24),
-                  MovieCategoryComponent(
-                    title: "Sci-Fi",
-                    onViewAllTap: () {},
-                    onMovieTap: () {
-                      MovieDetailRoute(id: "movie").push(context);
-                    },
-                  ),
-                  const SizedBox(height: 24),
-                  MovieCategoryComponent(
-                    title: "Action",
-                    onViewAllTap: () {},
-                    onMovieTap: () {
-                      MovieDetailRoute(id: "movie").push(context);
-                    },
+                    ),
                   ),
                 ],
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(16),
+              MovieCarousel(
+                itemCount: 10,
+                builder: (index, isOnCenter) =>
+                    MovieComponent(height: 400, onTap: () {}),
+              ),
+              const SizedBox(height: 24),
+              MovieCategoryComponent(
+                title: "New Release",
+                onViewAllTap: () {},
+                onMovieTap: () {
+                  MovieDetailRoute(id: "movie").push(context);
+                },
+              ),
+              const SizedBox(height: 24),
+              MovieCategoryComponent(
+                title: "Sci-Fi",
+                onViewAllTap: () {},
+                onMovieTap: () {
+                  MovieDetailRoute(id: "movie").push(context);
+                },
+              ),
+              const SizedBox(height: 24),
+              MovieCategoryComponent(
+                title: "Action",
+                onViewAllTap: () {},
+                onMovieTap: () {
+                  MovieDetailRoute(id: "movie").push(context);
+                },
+              ),
+            ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 55,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
                   colors: [
                     context.colorScheme.surface.withValues(alpha: 0.7),
                     Colors.transparent,
                   ],
                 ),
               ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  context.colorScheme.surface.withValues(alpha: 0.7),
+                  Colors.transparent,
+                ],
+              ),
+            ),
+            child: SafeArea(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -114,40 +126,51 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       size: 24,
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 8),
                   Expanded(
-                    child: ClipRSuperellipse(
-                      borderRadius: BorderRadius.circular(20),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          height: 50,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: context.colorScheme.containerMedium,
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.search,
-                                color: context.colorScheme.textPrimary,
-                                size: 24,
+                    child: Hero(
+                      tag: "search",
+                      child: OnTapScale(
+                        onTap: () {
+                          SearchRoute().push(context);
+                        },
+                        child: ClipRSuperellipse(
+                          borderRadius: BorderRadius.circular(20),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              height: 50,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: context.colorScheme.containerMedium,
                               ),
-                              const SizedBox(width: 8),
-                              Text(
-                                "Search",
-                                style: AppTextStyles.body.copyWith(
-                                  color: context.colorScheme.textSecondary,
+                              child: Material(
+                                color: Colors.transparent,
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.search,
+                                      color: context.colorScheme.textDisabled,
+                                      size: 24,
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Text(
+                                      "Search",
+                                      style: AppTextStyles.body.copyWith(
+                                        color: context.colorScheme.textDisabled,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 8),
                   BlurIconButton(
                     icon: Icon(
                       Icons.menu,
@@ -158,8 +181,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

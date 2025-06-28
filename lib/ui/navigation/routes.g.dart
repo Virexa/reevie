@@ -6,7 +6,12 @@ part of 'routes.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$onBoardRoute, $homeRoute];
+List<RouteBase> get $appRoutes => [
+  $onBoardRoute,
+  $homeRoute,
+  $movieDetailRoute,
+  $searchRoute,
+];
 
 RouteBase get $onBoardRoute => GoRouteData.$route(
   path: '/onboard',
@@ -29,18 +34,8 @@ extension $OnBoardRouteExtension on OnBoardRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $homeRoute => GoRouteData.$route(
-  path: '/',
-
-  factory: $HomeRouteExtension._fromState,
-  routes: [
-    GoRouteData.$route(
-      path: ':id',
-
-      factory: $MovieDetailRouteExtension._fromState,
-    ),
-  ],
-);
+RouteBase get $homeRoute =>
+    GoRouteData.$route(path: '/', factory: $HomeRouteExtension._fromState);
 
 extension $HomeRouteExtension on HomeRoute {
   static HomeRoute _fromState(GoRouterState state) => const HomeRoute();
@@ -57,11 +52,39 @@ extension $HomeRouteExtension on HomeRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+RouteBase get $movieDetailRoute => GoRouteData.$route(
+  path: '/movie/:id',
+
+  factory: $MovieDetailRouteExtension._fromState,
+);
+
 extension $MovieDetailRouteExtension on MovieDetailRoute {
   static MovieDetailRoute _fromState(GoRouterState state) =>
       MovieDetailRoute(id: state.pathParameters['id']!);
 
-  String get location => GoRouteData.$location('/${Uri.encodeComponent(id)}');
+  String get location =>
+      GoRouteData.$location('/movie/${Uri.encodeComponent(id)}');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $searchRoute => GoRouteData.$route(
+  path: '/search',
+
+  factory: $SearchRouteExtension._fromState,
+);
+
+extension $SearchRouteExtension on SearchRoute {
+  static SearchRoute _fromState(GoRouterState state) => const SearchRoute();
+
+  String get location => GoRouteData.$location('/search');
 
   void go(BuildContext context) => context.go(location);
 
