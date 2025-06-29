@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reevie/ui/navigation/login/login_screen.dart';
 import 'package:reevie/ui/navigation/movie-detail/movie_detail_screen.dart';
 import 'package:reevie/ui/navigation/on_board/onboard_screen.dart';
 import 'package:reevie/ui/navigation/search/search_screen.dart';
@@ -12,6 +13,7 @@ class RoutePaths {
   static const home = '/';
   static const movieDetail = '/movie/:id';
   static const search = '/search';
+  static const login = '/login';
 }
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -23,6 +25,15 @@ class OnBoardRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const OnBoardScreen();
+}
+
+@TypedGoRoute<LoginRoute>(path: RoutePaths.login)
+class LoginRoute extends GoRouteData {
+  const LoginRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const LoginScreen();
 }
 
 @TypedGoRoute<HomeRoute>(path: RoutePaths.home)
