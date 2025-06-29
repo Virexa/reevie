@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:reevie/style/theme/typography/typography.dart';
 import 'package:reevie/ui/extensions/context_extension.dart';
+import 'package:reevie/ui/navigation/routes.dart';
 import '../../components/animations/on_tap_scale.dart';
 
 class OnboardContent {
@@ -79,7 +80,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             "Experience high-quality streaming with stunning visuals, seamless playback, and stories that move you.",
         image:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdSMROV-tc6P_Tnj-loNaJ-YcXhMXpsTZzKg&s",
-        actionTap: () {},
+        actionTap: () {
+          LoginRoute().go(context);
+        },
         actionTitle: "Get Started",
       ),
     ];

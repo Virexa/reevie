@@ -19,6 +19,7 @@ dependencies:
 
   # UI
   cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.0
 
   # State Management
   flutter_riverpod: ^2.6.1
@@ -43,6 +44,7 @@ dev_dependencies:
 
   # Code Generator
   build_runner: ^2.4.15
+  flutter_gen: ^5.10.0
 
   # Builder
   freezed: ^3.0.6
@@ -52,3 +54,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+
+  assets:
+    - assets/images/

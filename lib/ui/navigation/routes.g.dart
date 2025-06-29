@@ -8,6 +8,7 @@ part of 'routes.dart';
 
 List<RouteBase> get $appRoutes => [
   $onBoardRoute,
+  $loginRoute,
   $homeRoute,
   $movieDetailRoute,
   $searchRoute,
@@ -23,6 +24,27 @@ extension $OnBoardRouteExtension on OnBoardRoute {
   static OnBoardRoute _fromState(GoRouterState state) => const OnBoardRoute();
 
   String get location => GoRouteData.$location('/onboard');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $loginRoute => GoRouteData.$route(
+  path: '/login',
+
+  factory: $LoginRouteExtension._fromState,
+);
+
+extension $LoginRouteExtension on LoginRoute {
+  static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
+
+  String get location => GoRouteData.$location('/login');
 
   void go(BuildContext context) => context.go(location);
 
