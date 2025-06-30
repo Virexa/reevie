@@ -43,7 +43,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                   ),
                   OnTapScale(
-                    onTap: () {},
+                    onTap: () {
+                      CategoryRoute(id: "Popular").push(context);
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
@@ -64,7 +66,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               const SizedBox(height: 24),
               MovieCategoryComponent(
                 title: "New Release",
-                onViewAllTap: () {},
+                onViewAllTap: () {
+                  CategoryRoute(id: 'New Release').push(context);
+                },
                 onMovieTap: () {
                   MovieDetailRoute(id: "movie").push(context);
                 },
@@ -72,7 +76,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               const SizedBox(height: 24),
               MovieCategoryComponent(
                 title: "Sci-Fi",
-                onViewAllTap: () {},
+                onViewAllTap: () {
+                  CategoryRoute(id: 'Sci-Fi').push(context);
+                },
                 onMovieTap: () {
                   MovieDetailRoute(id: "movie").push(context);
                 },
@@ -80,7 +86,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               const SizedBox(height: 24),
               MovieCategoryComponent(
                 title: "Action",
-                onViewAllTap: () {},
+                onViewAllTap: () {
+                  CategoryRoute(id: 'Action').push(context);
+                },
                 onMovieTap: () {
                   MovieDetailRoute(id: "movie").push(context);
                 },
@@ -138,30 +146,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           borderRadius: BorderRadius.circular(20),
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 16),
-                              height: 50,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: context.colorScheme.containerMedium,
+                            child: Material(
+                              color: context.colorScheme.containerMedium,
+                              shape: RoundedSuperellipseBorder(
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              child: Material(
-                                color: Colors.transparent,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.search,
-                                      color: context.colorScheme.textDisabled,
-                                      size: 24,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Text(
-                                      "Search",
-                                      style: AppTextStyles.body.copyWith(
+                              child: SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.search,
                                         color: context.colorScheme.textDisabled,
+                                        size: 24,
                                       ),
-                                    ),
-                                  ],
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        "Search",
+                                        style: AppTextStyles.body.copyWith(
+                                          color:
+                                              context.colorScheme.textDisabled,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
