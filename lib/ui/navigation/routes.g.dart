@@ -10,6 +10,7 @@ List<RouteBase> get $appRoutes => [
   $onBoardRoute,
   $loginRoute,
   $homeRoute,
+  $categoryRoute,
   $movieDetailRoute,
   $searchRoute,
 ];
@@ -63,6 +64,29 @@ extension $HomeRouteExtension on HomeRoute {
   static HomeRoute _fromState(GoRouterState state) => const HomeRoute();
 
   String get location => GoRouteData.$location('/');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $categoryRoute => GoRouteData.$route(
+  path: '/category/:id',
+
+  factory: $CategoryRouteExtension._fromState,
+);
+
+extension $CategoryRouteExtension on CategoryRoute {
+  static CategoryRoute _fromState(GoRouterState state) =>
+      CategoryRoute(id: state.pathParameters['id']!);
+
+  String get location =>
+      GoRouteData.$location('/category/${Uri.encodeComponent(id)}');
 
   void go(BuildContext context) => context.go(location);
 

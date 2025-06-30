@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reevie/ui/navigation/category/category_screen.dart';
 import 'package:reevie/ui/navigation/login/login_screen.dart';
 import 'package:reevie/ui/navigation/movie-detail/movie_detail_screen.dart';
 import 'package:reevie/ui/navigation/on_board/onboard_screen.dart';
@@ -12,6 +13,7 @@ class RoutePaths {
   static const onboard = '/onboard';
   static const home = '/';
   static const movieDetail = '/movie/:id';
+  static const category = '/category/:id';
   static const search = '/search';
   static const login = '/login';
 }
@@ -42,6 +44,17 @@ class HomeRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) => const HomeScreen();
+}
+
+@TypedGoRoute<CategoryRoute>(path: RoutePaths.category)
+class CategoryRoute extends GoRouteData {
+  final String id;
+
+  const CategoryRoute({required this.id});
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      CategoryScreen(title: id);
 }
 
 @TypedGoRoute<MovieDetailRoute>(path: RoutePaths.movieDetail)

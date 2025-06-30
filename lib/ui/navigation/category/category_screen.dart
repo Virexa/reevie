@@ -1,18 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:reevie/ui/components/app_text_field.dart';
-import 'package:reevie/ui/components/buttons/blur_icon_button.dart';
 import 'package:reevie/ui/extensions/context_extension.dart';
-import 'components/search_result_item.dart';
+import '../../../style/theme/typography/typography.dart';
+import '../../components/buttons/blur_icon_button.dart';
+import 'components/category_item.dart';
 
-class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+class CategoryScreen extends StatefulWidget {
+  final String title;
+
+  const CategoryScreen({super.key, required this.title});
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +23,12 @@ class _SearchScreenState extends State<SearchScreen> {
         children: [
           ListView(
             children: [
-              const SizedBox(height: 74),
-              SearchResultItem(),
-              SearchResultItem(),
-              SearchResultItem(),
-              SearchResultItem(),
-              SearchResultItem(),
+              const SizedBox(height: 78),
+              CategoryItem(),
+              CategoryItem(),
+              CategoryItem(),
+              CategoryItem(),
+              CategoryItem(),
             ],
           ),
           Container(
@@ -34,10 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  context.colorScheme.surface.withValues(alpha: 0.7),
-                  Colors.transparent,
-                ],
+                colors: [context.colorScheme.surface, Colors.transparent],
               ),
             ),
             child: SafeArea(
@@ -53,18 +53,12 @@ class _SearchScreenState extends State<SearchScreen> {
                       color: context.colorScheme.textPrimary,
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 16),
                   Expanded(
-                    child: Hero(
-                      tag: "search",
-                      child: AppTextField(
-                        hintText: "Search",
-                        autofocus: true,
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          size: 24,
-                          color: context.colorScheme.textDisabled,
-                        ),
+                    child: Text(
+                      widget.title,
+                      style: AppTextStyles.header3.copyWith(
+                        color: context.colorScheme.textPrimary,
                       ),
                     ),
                   ),
